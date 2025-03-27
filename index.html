@@ -29,8 +29,7 @@
             top: 0;
             left: 0;
             pointer-events: none;
-        }
-    
+        }   
 
         header {
             background: rgba(191, 168, 223, 0.9);
@@ -52,22 +51,38 @@
             font-size: 24px;
             font-weight: bold;
         }
+        h1 a {
+            text-decoration: none; /* Menghilangkan garis bawah link */
+            color: inherit; /* Menggunakan warna teks bawaan */
+            cursor: pointer; /* Mengubah kursor menjadi tangan saat diarahkan */
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px 20px; /* Sesuaikan padding */
+        }
 
         nav ul {
             list-style: none;
             display: flex;
-            flex-wrap: nowrap;
+            gap: 10px;
             justify-content: center;
         }
 
         nav ul li {
+            display: inline-block;
             margin: 0 10x;
         }
 
         nav ul li a {
             color: white;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 14px;
             transition: color 0.3s ease;
             padding: 8px 12px;
         }
@@ -81,15 +96,24 @@
             flex-direction: row; 
             padding: 10px;
         }
+        h1 {
+            font-size: 24px;
+        }
 
         nav ul {
             justify-content: flex-end; 
             width: 100%;
-            padding: 0;
+            flex-direction: row;
+            text-align: end;
+            padding: 0px;
+            align-items: flex-end;
+            gap: 10px;
+            flex-wrap: nowrap;
         }
 
         nav ul li {
-            margin: 0 5px; 
+            margin: 0 5px;
+            width: 100%; 
         }
 
         nav ul li a {
@@ -215,7 +239,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 40px 0;
+            padding: 40px 10px;
         }
 
         #contact h2 {
@@ -290,10 +314,9 @@
 <body>
     <div id="particles-js"></div>
     <header>
-        <h1 class="logo">El's Portfolio</h1>
+        <h1><a href="#home">El's Portfolio</a></h1>
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
