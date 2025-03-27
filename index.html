@@ -145,6 +145,9 @@
         }
 
         .hero {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
             height: 100vh;
             display: flex;
             flex-direction: column;
@@ -206,12 +209,19 @@
         }
 
         .project {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-in-out, transform, 1s ease-in-out;
             background: rgba(255, 255, 255, 0.8);
             padding: 20px;
             margin: 20px auto;
             border-radius: 10px;
             max-width: 400px;
             transition: transform 0.3s ease;
+        }
+        .project.show{
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .project img {
@@ -303,7 +313,7 @@
 </head>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script>
-        ScrollReveal().reveal('.hero, .about, .services, .portfolio, .contact', {
+        ScrollReveal().reveal('.about, .services, .portfolio, .contact', {
             delay: 200,
             duration: 1000,
             distance: '50px',
@@ -333,7 +343,7 @@
 
     <section id="about">
         <h2>Tentang Saya</h2>
-        <img class="profile-pic" src="LProfil.jpg" alt="Foto Profil" loading="lazy">
+        <img class="profile-pic" src="LProfil.jpg" alt="Foto Profil">
         <p>Hai! Saya Immanuel Wiysman Pasaribu atau yang akrab disapa El, saya adalah seorang programmer pemula yang sedang menjelajahi dunia pemograman.</p>
         <p>Saya suka bereksperimen dengan HTML, CSS, dan JavaScript untuk menciptakan tampilan web yang menarik.</p>
         <p>Saya juga tertarik dengan pengembangan aplikasi dan ingin suatu hari nanti bisa membuat produk digital yang bermanfaat bagi banyak orang.</p>
@@ -343,7 +353,7 @@
     <section id="projects">
         <h2>Proyek Saya</h2>
         <div class="project">
-            <img src="proyek1.png" alt="Proyek 1"loading="lazy">
+            <img src="proyek1.png" alt="Proyek 1">
             <h3>Proyek 1</h3>
             <p>Ini adalah Chatbot yang saya kembangkan sendiri saat fase saya mempelajari pemograman.</p>
             <p>Chatbot ini dibuat menggunakan 3 bahasa yaitu HTML, CSS, dan JavaScript agar tampilan web dapat lebih menarik.</p>
@@ -376,6 +386,12 @@
     </footer>
 
     <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll('.project').forEach(project => {
+                project.classList.add('show');
+            });
+        });
+
         document.querySelectorAll('nav ul li a').forEach(anchor => {
             anchor.addEventListener('click', function(event) {
                 event.preventDefault();
@@ -431,23 +447,21 @@
                 setTimeout(typeEffect, 100);
             }
             else {
-                setTimeout(() => {
                     document.getElementById("hero-text").style.opacity = "1";
                     document.getElementById("hero-text").style.transform = "translateY(0)";
-                }, 500); // Muncul setelah 0.5 detik
-                setTimeout(() => {
                     document.getElementById("quote").style.opacity = "1";
                     document.getElementById("quote").style.transform = "translateY(0)";
-                }, 1000);
-                setTimeout(() => {
                     document.getElementById("hero-btn").style.opacity = "1";
                     document.getElementById("hero-btn").style.transform = "translateY(0)";
-                }, 1500); 
             }
         }
-        window.onload = function() {
+        window.onload = function () {
+            console.log("Animasi hero berjalan...");
+            document.querySelector(".hero").style.opacity = "1";
+            document.querySelector(".hero").style.transform = "translateY(0)";
             typeEffect();
-        }
+        };
+
     </script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
@@ -507,6 +521,5 @@
             }
         });
     </script>    
-
 </body>
 </html>
