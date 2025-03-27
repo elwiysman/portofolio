@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Domine:wght@400..700&family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Domine', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #87CEFA, #FFC0CB);
+            color: #333;
+            text-align: center;
+        }
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Agar tidak menutupi konten */
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+    
+
+        header {
+            background: rgba(191, 168, 223, 0.9);
+            color: #1e1e3ce6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            flex-wrap: nowrap;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 10x;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+            padding: 8px 12px;
+        }
+
+        nav ul li a:hover {
+            color: #1e1e3ce6;
+        }
+
+    @media (max-width: 768px) {
+        header {
+            flex-direction: row; 
+            padding: 10px;
+        }
+
+        nav ul {
+            justify-content: flex-end; 
+            width: 100%;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 5px; 
+        }
+
+        nav ul li a {
+            font-size: 14px; 
+            padding: 6px 10px;
+        }
+    }
+        .parallax {
+            height: 100vh; 
+            background: linear-gradient(to right, #87CEFA,#FFC0CB); 
+            background-attachment: fixed; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white; 
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        #hero-text, #hero-btn {
+            opacity: 0;
+            transform: translateY(30px); 
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        #quote {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .hero h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background: #43e0ff;
+            color: black;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            background: #0c274b;
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0px 0px 15px #43e0ff;
+        }
+
+        .profile-pic {
+            width: 150px; 
+            height: 150px;
+            border-radius: 50%; 
+            object-fit: cover;
+            display: block;
+            margin: 20px auto; 
+            border: 2px solid white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
+        }
+
+        section{
+            padding: 60px 20px;
+        }
+
+        #about p{
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+        
+        section {
+            padding: 60px 20px;
+        }
+
+        .project {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+            max-width: 400px;
+            transition: transform 0.3s ease;
+        }
+
+        .project img {
+            width: 100%; 
+            max-width: 400px; 
+            height: auto; 
+            border-radius: 10px; 
+            margin-bottom: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .project:hover {
+            transform: scale(1.05);
+        }
+        section{
+            padding: 60px 20px;
+        }
+
+        #contact p{
+            margin-bottom: 15px;
+            margin-top: 10px;
+        }
+
+        #contact {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 0;
+        }
+
+        #contact h2 {
+            margin-bottom: 15px;
+        }
+
+        #contact div {
+            display: flex;
+            gap: 20px; 
+        }
+
+        #contact a {
+            font-size: 24px; 
+            color: #333;
+            text-decoration: none;
+            transition: transform 0.2s ease, color 0.3s ease;
+        }
+
+        #contact a:hover {
+            transform: scale(1.2);
+        }
+
+        #contact a:nth-child(1) i { color: #D44638; } 
+        #contact a:nth-child(2) i { color: #25D366; } 
+        #contact a:nth-child(3) i { color: #E4405F; } 
+        
+        #scrollToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: #1e1e3ce6;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #scrollToTop:hover {
+            background: #007BFF;
+        }
+
+        #scrollToTop i {
+            font-size: 16px;
+        }
+
+        footer {
+            background: #1e1e3ce6;
+            color: white;
+            padding: 20px;
+            margin-top: 5px;
+        }
+
+    </style>
+</head>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script>
+        ScrollReveal().reveal('.hero, .about, .services, .portfolio, .contact', {
+            delay: 200,
+            duration: 1000,
+            distance: '50px',
+            origin: 'bottom',
+            easing: 'ease-in-out'
+        });
+    </script>
+<body>
+    <div id="particles-js"></div>
+    <header>
+        <h1 class="logo">El's Portfolio</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h2 id="typing"></h2>
+        <p id="hero-text">Jika pada awalnya Anda tidak berhasil, sebut saja versi 1.0.</p>
+        <p id="quote">"Khayri RR Woulfe"</p>
+        <a href="#projects" class="btn"id="hero-btn">Lihat Proyek</a>
+    </section>
+
+    <section id="about">
+        <h2>Tentang Saya</h2>
+        <img class="profile-pic" src="LProfil.jpg" alt="Foto Profil" loading="lazy">
+        <p>Hai! Saya Immanuel Wiysman Pasaribu atau yang akrab disapa El, saya adalah seorang programmer pemula yang sedang menjelajahi dunia pemograman.</p>
+        <p>Saya suka bereksperimen dengan HTML, CSS, dan JavaScript untuk menciptakan tampilan web yang menarik.</p>
+        <p>Saya juga tertarik dengan pengembangan aplikasi dan ingin suatu hari nanti bisa membuat produk digital yang bermanfaat bagi banyak orang.</p>
+        <p>Jika kamu punya ide menarik atau ingin berkolaborasi, jangan ragu untuk menghubungi saya!</p>
+    </section>
+
+    <section id="projects">
+        <h2>Proyek Saya</h2>
+        <div class="project">
+            <img src="proyek1.png" alt="Proyek 1"loading="lazy">
+            <h3>Proyek 1</h3>
+            <p>Ini adalah Chatbot yang saya kembangkan sendiri saat fase saya mempelajari pemograman.</p>
+            <p>Chatbot ini dibuat menggunakan 3 bahasa yaitu HTML, CSS, dan JavaScript agar tampilan web dapat lebih menarik.</p>
+        </div>
+        <div class="project">
+            <h3>Proyek 2</h3>
+            <p>Deskripsi singkat tentang proyek.</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Hubungi Saya</h2>
+        <div>
+            <a href="mailto:elwiysman@gmail.com" target="_blank">
+                <i class="fas fa-envelope"></i>
+            </a>
+            <a href="https://wa.me/6289532061892" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://www.instagram.com/mnlwysm" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+        <div></div>    
+    </section>
+
+    <button id="scrollToTop"><i class="fas fa-arrow-up"></i></button>
+
+    <footer>
+        <p>© 2025 Immanuel Wiysman Pasaribu - Portofolio</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('nav ul li a').forEach(anchor => {
+            anchor.addEventListener('click', function(event) {
+                event.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                document.getElementById(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        const sections = document.querySelectorAll('section');
+
+        function revealSections() {
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop < window.innerHeight - 100) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealSections);
+
+        sections.forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(50px)';
+            section.style.transition = 'all 0.5s ease-out';
+        });
+
+        const scrollToTopButton = document.getElementById('scrollToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollToTopButton.style.display = 'flex';
+            }  
+            else {
+                scrollToTopButton.style.display = 'none';
+            }
+        });
+
+        scrollToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        const text = "Welcome to My Portfolio";
+        let index = 0;
+
+        function typeEffect() {
+            if (index < text.length) {
+                document.getElementById("typing").textContent += text.charAt(index);
+                index++;
+                setTimeout(typeEffect, 100);
+            }
+            else {
+                setTimeout(() => {
+                    document.getElementById("hero-text").style.opacity = "1";
+                    document.getElementById("hero-text").style.transform = "translateY(0)";
+                }, 500); // Muncul setelah 0.5 detik
+                setTimeout(() => {
+                    document.getElementById("quote").style.opacity = "1";
+                    document.getElementById("quote").style.transform = "translateY(0)";
+                }, 1000);
+                setTimeout(() => {
+                    document.getElementById("hero-btn").style.opacity = "1";
+                    document.getElementById("hero-btn").style.transform = "translateY(0)";
+                }, 1500); 
+            }
+        }
+        window.onload = function() {
+            typeEffect();
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 80, /* Jumlah partikel */
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ffffff" /* Warna partikel */
+                },
+                "shape": {
+                    "type": "circle"
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": true
+                },
+                "size": {
+                    "value": 3,
+                    "random": true
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 3
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    }
+                },
+                "modes": {
+                    "repulse": {
+                        "distance": 100,
+                        "duration": 0.4
+                    }
+                }
+            }
+        });
+    </script>    
+
+</body>
+</html>
